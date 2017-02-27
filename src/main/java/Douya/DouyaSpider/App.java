@@ -40,7 +40,12 @@ public class App {
 		static void getBlogByUser(String user)
 		{
 			String url="http://blog.csdn.net/"+user+"/article/list/";
-			for( int i=1; i<=1; i++)
+			int allPage=1;
+			String testpage = PageUtils.getContent(url+1);
+			allPage=BlogList.getAllPage(testpage);
+			int xx=1;
+			xx++;
+			for( int i=1; i<=allPage; i++)
 			{
 				try {
 					

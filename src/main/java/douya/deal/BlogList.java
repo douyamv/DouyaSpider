@@ -42,5 +42,39 @@ public class BlogList {
 	 
 			
 	}
+
+	public static int getAllPage(String x) {
+		// TODO Auto-generated method stub
+		int allPage=1;
+		HtmlCleaner htmlCleaner = new HtmlCleaner();
+		// 相当于htmlcleaner对页面进行处理
+		TagNode rootNode = htmlCleaner.clean(x );
+	 
+		//String next_url = HtmlUtils.getAttributeByAttr(rootNode, "//*[@id=\"J_topPage\"]/a[2]", "href");
+		String next_url = HtmlUtils.getAttributeByAttr(rootNode, "//*[@class=\"article_title\"][1]", "html");
+		Object[] evaluateXPath;
+		try {
+			evaluateXPath = rootNode.evaluateXPath("//*[@id=\"papelist\"]");
+		if(evaluateXPath==null)
+			allPage=1;
+		else{
+			TagNode tagNode = (TagNode)evaluateXPath[0];
+			evaluateXPath = tagNode.evaluateXPath("//a[last()]"); //获取最后一个标签的地址
+			tagNode= (TagNode)evaluateXPath[0];
+			String lasturl = HtmlUtils.getAttributeByAttr(tagNode, ".", "href");
+			String lastN=lasturl.substring(lasturl.lastIndexOf("/")+1);
+			allPage=Integer.parseInt(lastN);
+					
+			 
+		}
+		}
+		catch(Exception e)
+		{
+			allPage=1;
+		}
+	 
+		return allPage;
+		
+	}
 	 
 }
