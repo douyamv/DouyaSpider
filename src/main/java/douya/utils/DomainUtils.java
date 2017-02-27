@@ -1,4 +1,4 @@
-package cn.ivan.spider.utils;
+package douya.utils;
 
 import java.net.MalformedURLException;
 import java.net.URL;

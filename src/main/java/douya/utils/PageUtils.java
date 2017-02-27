@@ -1,4 +1,4 @@
-package cn.ivan.spider.utils;
+package douya.utils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;

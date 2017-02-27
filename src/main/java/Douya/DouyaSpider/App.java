@@ -1,13 +1,15 @@
-package Douya.DouyaSpider;
+package douya.douyaSpider;
+
+import douya.utils.PageUtils;
 
 /**
- * Hello world!
+ *  
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class App {
+	public static void main(String[] args) {
+		String x = PageUtils.getContent("http://blog.csdn.net/jackfrued");
+		System.out.println(x);
+
+	}
 }
