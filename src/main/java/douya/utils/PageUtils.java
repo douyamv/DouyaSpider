@@ -12,6 +12,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import douya.bean.CsdnPage;
+
 /**
  * 页面帮助类
  * 
@@ -28,6 +30,8 @@ public class PageUtils {
 	 * @return
 	 */
 	public static String getContent(String url) {
+		
+	
 		HttpClientBuilder builder = HttpClients.custom();
 		// 创建一个链接
 		/*
