@@ -32,6 +32,7 @@ public class BlogList {
 				s=s.trim().replace("\r\n", "").replace(" ", "");
 				System.out.println(App.NUMBER++ +s);
 				// MysqlStore.insert(s, s, s);
+				App.redis.add("x"+s, s);
 				int x=0;
 				x++;
 		//		data.addUrl(goodsUrl);

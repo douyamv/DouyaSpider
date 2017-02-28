@@ -5,6 +5,7 @@ import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
 
 import douya.bean.CsdnPage;
+import douya.douyaSpider.App;
 import douya.store.MysqlStore;
 import douya.utils.HtmlUtils;
 
@@ -30,7 +31,8 @@ public class UserList {
 				String s=goodsUrl.toString();
 				s=s.trim().replace("\r\n", "").replace(" ", "").substring(21);
 				System.out.println(s);
-				//MysqlStore.insertUser(s );
+				 MysqlStore.insertUser(s );
+				
 				int x=0;
 				x++;
 		//		data.addUrl(goodsUrl);

@@ -7,6 +7,7 @@ import douya.deal.BlogList;
 import douya.deal.UserList;
 import douya.store.MysqlStore;
 import douya.utils.PageUtils;
+import douya.utils.RedisUtils;
 
 /**
  *  
@@ -14,6 +15,7 @@ import douya.utils.PageUtils;
  */
 public class App {
 	public static int NUMBER=0;
+	public static RedisUtils redis=new RedisUtils();
 	public static void main(String[] args) {
 		// String url="http://blog.csdn.net/phphot/article/list/";
 		// for( int i=1; i<=320; i++)
