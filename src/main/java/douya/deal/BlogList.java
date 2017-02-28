@@ -5,6 +5,7 @@ import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
 
 import douya.bean.CsdnPage;
+import douya.douyaSpider.App;
 import douya.store.MysqlStore;
 import douya.utils.HtmlUtils;
 
@@ -29,8 +30,8 @@ public class BlogList {
 				CharSequence goodsUrl =  tagNode.getText();
 				String s=goodsUrl.toString();
 				s=s.trim().replace("\r\n", "").replace(" ", "");
-				System.out.println(s);
-				MysqlStore.insert(s, s, s);
+				System.out.println(App.NUMBER++ +s);
+				// MysqlStore.insert(s, s, s);
 				int x=0;
 				x++;
 		//		data.addUrl(goodsUrl);
@@ -46,14 +47,18 @@ public class BlogList {
 	public static int getAllPage(String x) {
 		// TODO Auto-generated method stub
 		int allPage=1;
+		try {
 		HtmlCleaner htmlCleaner = new HtmlCleaner();
 		// 相当于htmlcleaner对页面进行处理
 		TagNode rootNode = htmlCleaner.clean(x );
 	 
 		//String next_url = HtmlUtils.getAttributeByAttr(rootNode, "//*[@id=\"J_topPage\"]/a[2]", "href");
 		String next_url = HtmlUtils.getAttributeByAttr(rootNode, "//*[@class=\"article_title\"][1]", "html");
+		 
+	 
 		Object[] evaluateXPath;
-		try {
+		
+	
 			evaluateXPath = rootNode.evaluateXPath("//*[@id=\"papelist\"]");
 		if(evaluateXPath==null)
 			allPage=1;

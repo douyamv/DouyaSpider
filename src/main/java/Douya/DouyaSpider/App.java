@@ -13,52 +13,52 @@ import douya.utils.PageUtils;
  *
  */
 public class App {
+	public static int NUMBER=0;
 	public static void main(String[] args) {
-//		String url="http://blog.csdn.net/phphot/article/list/";
-//		for( int i=1; i<=320; i++)
-//		{
-//			String realUrl=url+i;
-//			String x = PageUtils.getContent(realUrl);
-//			BlogList.process(x); 
-//		}
-		ArrayList<String > users=MysqlStore.getAlluser();
-		for( int i=0; i<users.size(); i++)
+		// String url="http://blog.csdn.net/phphot/article/list/";
+		// for( int i=1; i<=320; i++)
+		// {
+		// String realUrl=url+i;
+		// String x = PageUtils.getContent(realUrl);
+		// BlogList.process(x);
+		// }
+		
+		
+		for( int i=0; i<20; i++)
 		{
-			getBlogByUser(users.get(i));
+				 Thread t=new CrawThread();
+				 t.start();
 		}
-		int x=0;
-		x++;
-	/*	///craw user
-		String  expert_Url="http://blog.csdn.net/peoplelist.html?channelid=0&page=";
-		for( int i=1; i<=115; i++)
-		{
-			String realUrl=expert_Url+i;
-			String x = PageUtils.getContent(realUrl);
-			UserList.process(x); 
-		}*/
+		
+		/*
+		 * ///craw user String
+		 * expert_Url="http://blog.csdn.net/peoplelist.html?channelid=0&page=";
+		 * for( int i=1; i<=115; i++) { String realUrl=expert_Url+i; String x =
+		 * PageUtils.getContent(realUrl); UserList.process(x); }
+		 */
 	}
-		static void getBlogByUser(String user)
-		{
-			String url="http://blog.csdn.net/"+user+"/article/list/";
-			int allPage=1;
-			String testpage = PageUtils.getContent(url+1);
-			allPage=BlogList.getAllPage(testpage);
-			int xx=1;
-			xx++;
-			for( int i=1; i<=allPage; i++)
-			{
-				try {
-					
-				
-				String realUrl=url+i;
+
+	public static void getBlogByUser(String user) {
+		int allPage = 1;
+		String url = "http://blog.csdn.net/" + user + "/article/list/";
+		try {
+
+			String testpage = PageUtils.getContent(url + 1);
+			allPage = BlogList.getAllPage(testpage);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		for (int i = 1; i <= allPage; i++) {
+			try {
+
+				String realUrl = url + i;
 				String x = PageUtils.getContent(realUrl);
-				BlogList.process(x); 
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				BlogList.process(x);
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
 		}
-	
-	
-	
+	}
+
 }
